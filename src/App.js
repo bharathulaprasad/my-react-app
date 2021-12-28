@@ -10,8 +10,14 @@ const App = () => {
     <View style={styles.container}>
       <Text>You clicked {count} times</Text>
       <Button onPress={() => setCount(count + 1)} title="Click me!" />
+      <Cat name="Krishna" />
+      <Cat name="Bharathula" />
     </View>
   );
+};
+
+const Cat = (props) => {
+  return <Text>Hello, I am {props.name}!</Text>;
 };
 
 // React Native Styles
