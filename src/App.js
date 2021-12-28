@@ -1,16 +1,13 @@
 // React Native Counter Example using Hooks!
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <View style={styles.container}>
-      <Text>You clicked {count} times</Text>
-      <Button onPress={() => setCount(count + 1)} title="Click me!" />
+      <Counter />
       <Cat name="Krishna Bharathula" />
       <Copy name="Copyright 2022" />
     </View>
@@ -33,5 +30,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+const Counter = (props) => {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCounter(counter + 1);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [counter]);
+
+  return <h1>{counter}</h1>;
+};
 
 export default App;
